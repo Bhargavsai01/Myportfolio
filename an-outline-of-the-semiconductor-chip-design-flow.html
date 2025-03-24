@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5V1QKY3FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S5V1QKY3FD');
+  //gtag('config', 'G-C2H6EE41EC');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>An Outline of the Semiconductor Chip Design Flow</title>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="//static.designandreuse.com/IMAGES/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="All D and R Feeds" href="https://www.design-reuse.com/xml/1/1/all/rss.xml"/>
+<link rel="alternate" type="application/rss+xml" title="D and R Headline News" href="https://www.design-reuse.com/xml/1/1/news/rss.xml"/>
+<link rel="alternate" type="application/rss+xml" title="D and R Industry Articles" href="https://www.design-reuse.com/xml/1/1/articles/rss.xml"/>
+<link rel="alternate" type="application/rss+xml" title="D and R New Products" href="https://www.design-reuse.com/xml/1/1/products/rss.xml"/>
+<link rel="alternate" type="application/rss+xml" title="D and R Wanted IPs" href="https://www.design-reuse.com/xml/1/1/wanted/rss.xml"/>
+<link rel="alternate" type="application/rss+xml" title="D and R Industry Expert Blogs" href="https://www.design-reuse.com/xml/1/1/blogs/rss.xml"/>
+<link rel="dns-prefetch" href="https://static.designandreuse.com/">
+<link rel="dns-prefetch" href="https://staticad.designandreuse.com/">
+<link rel="dns-prefetch" href="https://www.us.design-reuse.com/">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+
+<meta name="description" content="his article provides an overview of the chip design flow, its different stages, and their contributions toward creating an effective chip. These stages include system specifications, architectural design, functional design, logic design, circuit design, physical design verification, and manufacturing."/>
+<meta name="keywords" content="an, outline, of, the, semiconductor, chip, design, flow"/>
+	<meta property="og:type" content="article"/>
+			<meta property="og:image" content="https://static.designandreuse.com/news_img2/homepage54033/20230515_1b.jpg"/>
+			<meta property="og:title" content="An Outline of the Semiconductor Chip Design Flow"/>
+			<meta property="og:url" content="https://www.design-reuse.com/articles/54033/an-outline-of-the-semiconductor-chip-design-flow.html"/>
+			<meta property="og:description" content="his article provides an overview of the chip design flow, its different stages, and their contributions toward creating an effective chip. These stages include system specifications, architectural design, functional design, logic design, circuit design, physical design verification, and manufacturing."/>
+		
+	<meta property="og:site_name" content="Design And Reuse"/>
+<link rel="canonical" href="https://www.design-reuse.com/articles/54033/an-outline-of-the-semiconductor-chip-design-flow.html" />
+ 
+
+<!--sphider_noindex--> 
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta name="Expires" content="Fri, 01 Jan 1990 00:00:00 GMT"/>
+<meta name="Created" content="2023-05-15 12:25:00"/><!--[if lte IE 8]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<script src="https://www.design-reuse.com//jscript/respond.min.js"></script>
+<![endif]-->
+	<link rel="stylesheet" type="text/css" href="https://static.designandreuse.com/staticnews-20230205.css"/>
+
+</head>
+<body>
+
+<form>
+<input id="menu-toggle" class="menu-toggle" type="checkbox">
+<nav>
+	<div class="menu">
+	<ul>
+		<li><a href="https://www.design-reuse.com/">Home</a></li>
+		<li><a href="https://www.design-reuse.com/sip/">Search Silicon IP</a></li>
+		<li><a href="https://www.design-reuse.com/vip/">Search Verification IP</a></li>
+		<li><a href="https://www.design-reuse.com/news/">Latest News</a></li>
+		<li><a href="https://www.design-reuse.com/articles/">Industry Articles</a></li>
+		<li><a href="https://www.design-reuse.com/industryexpertblogs/">Industry Expert Blogs</a></li>
+		<li><a href="https://www.design-reuse.com/video/">Videos</a></li>
+		<li><a href="https://www.design-reuse-embedded.com/ipsocdays/2025/"  rel="nofollow">Events</a></li>
+ 
+	</ul>
+  </div> 
+</nav>
+<section id="contentfull">
+<div class="top-bar">
+  <label for="menu-toggle" id="toggle">&equiv; <span>Menu</span></label> 
+  
+  <a id="drlogoS" href="https://www.design-reuse.com/">Design And Reuse</a>
+
+<ul id="top-bar-subscribe" style="margin-right:15px; margin-top:5px">
+
+			<li class="d-inline" >
+		<a class="login c7 sz11" href="https://www.design-reuse.com/login2.php?nexturl=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html">Login</a>
+		</li>
+		<li class="c5 sz11 d-inline">|</li>
+		
+
+	<li id="nav-login167156" class="d-inline">
+	<a class="login c7 sz11" href="https://www.design-reuse.com/users/signup.php">Subscribe</a>
+	</li>
+
+
+</ul>
+  </div> 
+</form>
+<div id="bandeau-nav167156">
+<div class="list grid-980">
+
+<ul id="nav-right167156" class="nav-right">
+
+<li class="c5 sz11 d-inline">|</li>
+
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/about/"> Company</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/foundry/siliconip/cn.php">D&amp;R China</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/foundry/siliconip/drembedded3.php" rel="nofollow">dr-embedded.com</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/wiki/" >Wiki</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+ 
+<li class="d-inline dropdown">
+<span class="c7 sz11" ><img src="https://static.designandreuse.com/img16/cn.png" width="21" height="16" style="margin-top:4px; margin-right:10px"></span>
+  <div class="dropdown-content">
+    <a href="https://www.design-reuse.com/" class="c5 sz11 d-inline"> <img src="https://static.designandreuse.com/img16/en.png" width="16" height="12" style="margin-top:4px;"> English</a>
+    <a href="https://www.design-reuse.com/foundry/siliconip/cn.php" class="c5 sz11 d-inline"><img src="https://static.designandreuse.com/img16/cn.png" width="16" height="12" style="margin-top:4px"> Chinese</a>
+  </div>
+</li>
+
+ 
+<style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+	cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 2px;
+	z-index: 99999;
+	margin-top: -8px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 1px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+</style>
+			<li class="d-inline" >
+		<a class="login c7 sz11" href="https://www.design-reuse.com/login2.php?nexturl=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html">Login</a>
+		</li>
+		<li class="c5 sz11 d-inline">|</li>
+		
+
+	<li id="nav-login167156" class="d-inline">
+	<a class="login c7 sz11" href="https://www.design-reuse.com/users/signup.php">Subscribe to D&amp;R SoC News Alert</a>
+	</li>
+
+
+</ul>
+</div>
+</div>
+<div id="leadeboard"><div id="leadeboard-in" >
+	<a href="https://www.design-reuse.com/" id="drlogo">Design And Reuse</a>
+	
+</div></div> 
+<div id="center">
+    <div class="outter"></div>
+    <div id="mainmenu" class="navigation navigation2012">
+        <ul id="menu-bar">
+            <li id="nav_onglet_1" class=" actu">
+                <a href="https://www.design-reuse.com/sip/" class="imaged"><span class="text">Search IP</span><span class="drop"></span></a>
+				<ul class="ombrage">
+				
+                    <li class="first">
+					     <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first"><a href="https://www.design-reuse.com/sip/"><strong>Silicon IP</strong></a></li>
+                                <li><a href="https://www.design-reuse.com/sip/analog-mixed-signal-c-3/">Analog & Mixed Signal</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/storage-controller-phy-c-5/">Storage Controller &amp; PHY</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/graphic-peripheral-c-6/">Graphic &amp; Peripheral</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/interfaces-c-7/">Interface Controller &amp; PHY</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/processors-microcontrollers-c-9/">Processors &amp; Microcontrollers</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/memory-logic-library-c-10/">Memory &amp; Logic Library</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/security-c-11/">Security</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/multimedia-c-12/">Multimedia</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/wireline-communication-c-13/">Wireline Communication</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/wireless-communication-c-14/">Wireless Communication</a></li>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/sip/provider.php"><strong>Silicon IP Vendors</strong></a>
+                                </li>
+
+
+
+								
+                            </ul>
+                        </div>
+                    </li>
+
+					
+                   <li>
+						<span>&nbsp;</span>
+
+                        <div class="ul">
+							<ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/vip/"><strong>Verification IP</strong></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/vip/">Search / Browse</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/vip/provider.php">Verification IP Vendors</a>
+                                </li>
+
+	
+					
+									<li class="first">
+                                    <a href="https://www.design-reuse.com/hds/"><strong>Software IP</strong></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/hds/">Search / Browse</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/hds/provider.php">Software IP Vendors</a>
+                                </li>
+   	  		
+                         
+                                <li>
+                                    <strong>&nbsp;</strong>
+                                </li>
+                                <li style="border-top:0px">
+                                    <strong>&nbsp;</strong>
+                                </li>
+                                <li>
+                                    <strong>Additional Services</strong>
+                                </li>
+
+                                <li>
+                                    <a href="https://www.design-reuse.com/sip/wanted/">Wanted IPs</a>
+                                </li>
+								
+																					
+					                                <li>
+                                    <a href="https://www.design-reuse.com/ipanalytics/">IP Analytics</a>
+                                </li>
+								
+					  	
+
+                            </ul>
+                        </div>
+                    </li>
+					
+					<li>
+						<a href="https://www.design-reuse.com/sip/">	
+						Featured Products</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/sip/low-latency-serdes-pma-10gbe-25gbe-ip-42687/"><img src="https://static.designandreuse.com/sip/logo/siliconcreations23.webp" alt="Silicon Creations" height="27" width="64" class="logo" loading="lazy"/></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/low-latency-serdes-pma-10gbe-25gbe-ip-42687/">Low-Latency SerDes PMA - 10GbE, 25GbE</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/nvm-otp-neobit-in-maxchip-180nm-160nm-150nm-110nm-90nm-80nm-ip-55047/"><img src="https://static.designandreuse.com/sip/logo/ememory.webp" alt="eMemory Technology Inc." height="27" width="64" class="logo" loading="lazy"/></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/nvm-otp-neobit-in-maxchip-180nm-160nm-150nm-110nm-90nm-80nm-ip-55047/">NVM OTP NeoBit in Maxchip (180nm, 160nm, 150nm, 110nm, 90nm, 80nm)</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/mipi-d-phy-tx-only-2-lanes-in-tsmc-28nm-22nm-16nm-12nm-n7-n6-ip-53838/"><img src="https://static.designandreuse.com/sip/logo/synopsys.svg" alt="Synopsys, Inc." height="27" width="64" class="logo" loading="lazy"/></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/mipi-d-phy-tx-only-2-lanes-in-tsmc-28nm-22nm-16nm-12nm-n7-n6-ip-53838/">MIPI D-PHY Tx-Only 2 Lanes in TSMC (28nm, 22nm, 16nm, 12nm, N7, N6)</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/400g-otn-transponder-with-aes-ip-46365/"><img src="https://static.designandreuse.com/sip/logo/awavesemi.webp" alt="Alphawave Semi" height="27" width="64" class="logo" loading="lazy"/></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/400g-otn-transponder-with-aes-ip-46365/">400G OTN Transponder with AES</a></p></div></li>	     
+						</ul></div>
+						
+                    </li>
+
+                </ul>
+				
+            </li>
+  		
+
+	
+					
+	
+            <li id="nav_onglet_3" class=" actu">
+                <a href="https://www.design-reuse.com/news/" class="imaged"><span class="text">News</span><span class="drop"></span></a>
+              <ul>
+                    <li class="first">
+                        <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/news/semiconductor-ip-soc-0.html">IP/SoC Products </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/embedded-systems-0.html">Embedded Systems </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/foundries-0.html">Foundries</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/chiplet-0.html">Chiplet </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/fpga-0.html">FPGA </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/fabless-0.html">Fabless / IDM </a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/deals-0.html">Deals</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/legal-0.html">Legal</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/business-0.html">Business</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/financial-0.html">Financial Results</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/people-0.html">People</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/commentary-analysis-0.html">Commentary / Analysis</a>
+                                </li> 
+								<li>
+                                    <a href="https://www.design-reuse.com/news/mostpopular"><strong>20 Most Popular News</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					<li>
+                        <a href="https://www.design-reuse.com/news/">					
+						Latest News</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="//www.design-reuse.com/news/57583/arteris-ai-platform-flexgen.html"><img src="//static.designandreuse.com/news_img2/news57583/a.jpg.webp"  alt="arteris-ai-platform-flexgen" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="//www.design-reuse.com/news/57583/arteris-ai-platform-flexgen.html">SoCs Get a Helping Hand from AI Platform FlexGen</a></p><div class="meta">Monday Mar. 24, 2025</div></div></li>	<li><div class="media"><a href="//www.design-reuse.com/news/57576/softbank-group-to-acquire-ampere-computing.html"><img src="//static.designandreuse.com/news_img2/news57576/b.jpg.webp"  alt="softbank-group-to-acquire-ampere-computing" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="//www.design-reuse.com/news/57576/softbank-group-to-acquire-ampere-computing.html">SoftBank Group to Acquire Ampere Computing</a></p><div class="meta">Thursday Mar. 20, 2025</div></div></li>	<li><div class="media"><a href="//www.design-reuse.com/news/57575/omni-design-multi-gigahertz-adc-dac.html"><img src="//static.designandreuse.com/news_img2/news57575/a.jpg.webp"  alt="omni-design-multi-gigahertz-adc-dac" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="//www.design-reuse.com/news/57575/omni-design-multi-gigahertz-adc-dac.html">Omni Design Technologies Delivers Multi-Gigahertz SWIFT™ Data Converter Solutions for Satellite Communications</a></p><div class="meta">Thursday Mar. 20, 2025</div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul>
+
+            </li>
+            <li id="nav_onglet_4" class=" actu">
+                <a href="https://www.design-reuse.com/articles/" class="imaged"><span class="text">Industry Articles</span><span class="drop"></span></a>
+              <ul>
+                    <li class="first">
+                        <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/articles/semiconductor-ip-soc-0.html">IP/SoC Products </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/embedded-systems-0.html">Embedded Systems </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/foundries-0.html">Foundries</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/fpga-0.html">FPGA </a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/articles/business-0.html">Business</a>
+                                </li>
+								<li>
+                                    <a href="https://www.design-reuse.com/articles/mostpopular"><strong>20 Most Popular Articles</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					<li>
+                        <a href="https://www.design-reuse.com/articles/">					
+						Featured Articles</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/articles/57584/discover-new-tessent-ultrasight-v-from-siemens-eda-and-accelerate-your-risc-v-development.html"><img src="//static.designandreuse.com/news_img2/news57584/a.jpg.webp"  alt="discover-new-tessent-ultrasight-v-from-siemens-eda-and-accelerate-your-risc-v-development" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/57584/discover-new-tessent-ultrasight-v-from-siemens-eda-and-accelerate-your-risc-v-development.html">Discover new Tessent UltraSight-V from Siemens EDA, and accelerate your RISC-V development.</a></p><div class="meta">Monday Mar. 24, 2025</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/articles/57527/density-management-in-analog-layout-design-addressing-issues-and-ensuring-consistency.html"><img src="//static.designandreuse.com/news_img2/news57527/a.jpg.webp"  alt="density-management-in-analog-layout-design-addressing-issues-and-ensuring-consistency" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/57527/density-management-in-analog-layout-design-addressing-issues-and-ensuring-consistency.html">Density Management in Analog Layout Design: Addressing Issues and Ensuring Consistency</a></p><div class="meta">Monday Mar. 10, 2025</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/articles/57477/how-the-ability-to-manage-register-specifications-helps-you-create-more-competitive-products.html"><img src="//static.designandreuse.com/news_img2/news57477/a.jpg.webp"  alt="how-the-ability-to-manage-register-specifications-helps-you-create-more-competitive-products" width="73" height="50"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/57477/how-the-ability-to-manage-register-specifications-helps-you-create-more-competitive-products.html">How the Ability to Manage Register Specifications Helps You Create More Competitive Products</a></p><div class="meta">Monday Mar. 03, 2025</div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul> 
+            </li>
+            <li id="nav_onglet_5" class=" actu">
+                <a href="https://www.design-reuse.com/industryexpertblogs/" class="imaged"><span class="text">Blogs</span><span class="drop"></span></a>
+               <ul>
+ 					<li>
+                        <a href="https://www.design-reuse.com/industryexpertblogs/">					
+						Industry Expert Blogs</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/57563/why-post-quantum-cryptography-matters.html"><img src="//static.designandreuse.com/industryexpertblogs/images/kivicore.jpg"  alt="why-post-quantum-cryptography-matters" width="64" height="64"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/57563/why-post-quantum-cryptography-matters.html">Future-Proofing Embedded Systems: Why Post-Quantum Cryptography matters</a></p><div class="meta">KiviCore Blog - </div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/57556/risc-v-powered-executive-m-tech-vlsi-pg-program-for-next-gen-chip-designers.html"><img src="//static.designandreuse.com/industryexpertblogs/images/maven23.jpg"  alt="risc-v-powered-executive-m-tech-vlsi-pg-program-for-next-gen-chip-designers" width="64" height="64"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/57556/risc-v-powered-executive-m-tech-vlsi-pg-program-for-next-gen-chip-designers.html">RISC-V Powered Executive M.Tech VLSI PG Program for Next-Gen Chip Designers</a></p><div class="meta">Maven Silicon Blog - Sivakumar P R, Founder & CEO, Maven Silicon</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/57554/rambus-cryptomanager-root-of-trust.html"><img src="//static.designandreuse.com/industryexpertblogs/images/rambus.gif"  alt="rambus-cryptomanager-root-of-trust" width="64" height="64"  loading="lazy"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/57554/rambus-cryptomanager-root-of-trust.html">Rambus CryptoManager Root of Trust Solutions Tailor Security Capabilities to Specific Customer Needs with New Three-Tier Architecture</a></p><div class="meta">Rambus Blog - Bart Stevens, Senior Director of Product Marketing at Rambus</div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul>     
+            </li>
+			 <li id="nav_onglet_6" class=" cols">
+                <a href="https://www.design-reuse.com/video/" class="imaged nodrop"><span class="text">Videos</span></a>
+
+            </li>
+			
+			
+
+
+           <li id="nav_onglet_7" class=" cols">
+
+					<a  rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/2025/" class="imaged"><span class="text">Events</span><span class="drop"></span></a>
+					<ul>
+                    <li class="first">
+					
+					
+					  <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/2025/">IP-SOC  2025</a>
+
+
+						<span>Archives</span>
+                        <div class="ul">
+                            <ul>
+
+								<li class="first">
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/2024/">IP-SoC Days 2024</a>
+                                </li>
+								<li>
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/2023/">IP-SoC Days 2023</a>
+                                </li>
+		
+								<li >
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/2022/">IP-SoC Days 2022</a>
+                                </li>
+								<li >
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/ipsocdays2021/">IP-SoC Days 2021</a>
+                                </li>
+								<li >
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/ipsocdays2020/">IP-SoC Days 2020</a>
+                                </li>
+								<li >
+                                    <a rel="nofollow" href="https://www.design-reuse-embedded.com/ipsocdays/ipsocdays2019/">IP-SoC Days 2019</a>
+                                </li>
+
+                          
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+				
+            </li>
+ 
+        </ul>
+		
+<div id="search">
+		<form method="get" action="https://www.design-reuse.com/search/"  style="top:0px; width:250px">
+<ul id="searchFilter"><li class="filterBtn" onclick="return true" title="search filter">
+<div class="searchDropdown">
+<fieldset>
+<legend>Choose a filter </legend>
+<ul id="searchOptions">
+<li><input id="areafull" type="radio" value="full" name="area"/><label for="areafull">Full Site Search</label></li>
+<li><input id="areasip" type="radio" value="sip" name="area"/><label for="areasip">Silicon IP</label></li>
+<li><input id="areavip" type="radio" value="vip" name="area"/><label for="areavip">Verification IP</label></li>
+<li><input id="areahds" type="radio" value="hds" name="area"/><label for="areahds">Software IP</label></li>
+<li><input id="areanews" type="radio" value="news" name="area"/><label for="areanews">News</label></li>
+<li><input id="areaarticle" type="radio" value="articles" checked="checked" name="area"/><label for="areaarticle">Industry Articles</label></li>
+</ul>
+</fieldset>
+</div>
+</li>
+</ul>
+<input id="i" name="i" class="inset " type="text" maxlength="255" value="" placeholder="Search Industry Articles"  required>
+<input class="magBtn" type="submit" value="Search D&amp;R site" title="search"/>
+</form></div>
+
+    </div>
+</div>
+
+
+<div id="section">
+<div id="global">
+
+
+<!--/sphider_noindex--> 
+
+<div id="content">
+ <div id="left800">
+<style>
+.bluelink li {
+    line-height: 1.5em;
+}
+</style>
+<h1>An Outline of the Semiconductor Chip Design Flow</h1>
+<div id="wrapleft500">
+<div id="left500" class="bluelink">
+ 
+		  
+
+
+
+
+				
+
+<p><em>By Ambuj Nandanwar, Softnautics</em></p> <p>The process of chip design is a complex and multi-step endeavour that involves various stages from initial system specifications to manufacturing. Each step is crucial in achieving the goal of producing a fully operational chip. This article provides an overview of the chip design flow, its different stages, and their contributions toward creating an effective chip. These stages include system specifications, architectural design, functional design, logic design, circuit design, physical design verification, and manufacturing.</p> <p>The first step in any new development involves determining the type of device/product to be designed, such as an integrated circuit (IC), ASIC, FPGA, SoC, and others. For instance, if the aim is to create something small yet powerful enough for high-speed applications like telecommunications or networking equipment, the best option might be an Application-Specific Integrated Circuit (ASIC). If the goal is to design something more flexible, capable of performing multiple tasks with minimal overhead, then an FPGA could be a better choice. Once the device type is chosen, the specifications can be defined.</p> <p><strong>Concept of chip design</strong></p> <p>A chip is a small electronic device that is programmed to perform a specific function. These devices are used in various applications, including computers and cell phones. VLSI technology has revolutionized the electronics industry by enabling designers to integrate millions or even billions of transistors onto a single chip. This has led to the development of powerful processors, memory devices, and other advanced electronic systems.</p>  <p>Chips are designed using different types of technology depending on their application requirements. Let us look into the flow of the entire <a href="https://www.design-reuse.com/exit/?urlid=53371" rel="nofollow">chip design</a> process.</p> <ul> <li><strong>System specification and architectural design</strong> <p>The first step in the chip design flow is to define the requirements and specifications of the chip. This includes defining what your product will do, how it will be used, and what performance metrics you need to meet. Once these requirements are defined, they can be used as input into designing your architecture and layout.</p> <p>The next step in chip design after establishing the requirements is to create an architecture that meets them while keeping costs and power consumption to a minimum, among other considerations. During the initial phase of chip design, designers make crucial decisions about the architecture, such as choosing between RISC (Reduced Instruction Set Computer) or CISC (Complex Instruction Set Computer), determining the number of ALUs (Arithmetic Logic Units) required, deciding on the structure and number of pipelines, selecting cache size, and other factors. These choices form the foundation of the rest of the design process, so it is vital that designers carefully evaluate each aspect and consider how it will impact the chip's overall efficiency and performance. These decisions are based on the chip's intended use and defined requirements, with the ultimate goal of creating a design that is efficient and effective while minimizing power consumption and costs. After completing the architectural design phase, designers create a Micro-Architectural Specification (MAS), which is a written description of the chip's architecture. This specification allows designers to accurately predict the design's performance, power consumption, and die size. By creating a comprehensive MAS, designers can ensure that the chip meets the requirements and specifications established during the initial design phase. A thorough MAS is critical to avoid errors later in the process and to ensure that the chip design meets the required performance standards and timelines. This may involve choosing between different processor types or FPGAs (Field-Programmable Gate Arrays).</p> <p><a href="https://www.design-reuse.com/exit/?urlid=55065" rel="nofollow"><img alt="" height="265" src="//static.designandreuse.com/img11/ajax-loader2.gif" width="485" longdesc="https://static.designandreuse.com/img20/20230515_1.jpg" class="deferredload"/></a></p> <p><a href="https://www.design-reuse.com/exit/?urlid=55065" rel="nofollow"><sup>Click to enlarge</sup></a></p> <p><em>Chip design flow</em></p> </li> </ul> <ul> <li><strong>Functional design</strong> <p>Next in the process is functional design. It involves defining the functionality and behavior of the chip. This includes creating a high-level description of the system's requirements and designing the algorithms and data flow needed to meet those requirements. The goal of this stage is to create a functional specification that can be used as a blueprint for the rest of the design process.</p> </li> <li><strong>Logic design</strong> <p>This step involves the creation of the digital logic circuits required to implement the functionality defined in the functional design stage. This stage includes creating a logical design using a hardware description language (HDL) and verifying the design's correctness using simulations.</p> </li> <li><strong>Circuit design</strong> <p>This stage involves designing the physical circuitry of the chip, including the selection of transistors, resistors, capacitors, and other components. The circuit design stage also involves designing the power supply and clock distribution networks for the chip.</p> </li> <li><strong>Physical design verification</strong> <p>Physical design verification is the process of checking the physical layout of a chip. This involves identifying any design issues and ensuring that the chip will be manufactured correctly. In this step, design of integrated circuit layout is verified via EDA software tools like logic simulators, logic analyzers, etc. and various techniques such as Design Rule Check (DRC), Layout versus Schematic (LVS), and timing and power analysis to ensure correct electrical and logical functionality and manufacturability.</p> </li> <li><strong>Verification and validation</strong> <p>Once you have completed the design of your chip, it is time to test it. This is called <a href="https://www.design-reuse.com/exit/?urlid=53372" rel="nofollow">verification and validation (V&amp;V)</a>. V&amp;V involves testing the chip using various emulation and simulation platforms to ensure that it meets all the requirements and functions correctly. If there are any errors in the design, it will show up during this stage of development. Validation also helps identify the functional correctness of few initially manufactured prototypes.</p> <p>At last is the fabrication of physical layout design. After the chip is designed and verified, a .GDS file is sent to foundry for fabrication.</p> </li> </ul> <p>Each stage of the chip design flow is critical to creating a successful and functional chip. By understanding the requirements of each stage, chip designers can create efficient, reliable, and cost-effective designs that meet the need of their customers across various industrial domains.</p> <p><strong>Future of chip design</strong></p> <p>The future of chip design is exciting and rapidly evolving, as technology advances. Next-gen chipsets enable new-age solutions by offering higher performance, lower power consumption, and increased functionality. These advancements drive innovation across many industries. One example of next-gen chipsets enabling new-age solutions is <a href="https://www.design-reuse.com/exit/?urlid=53933" rel="nofollow">Artificial Intelligence (AI) and Machine Learning (ML)</a> applications. AI and ML require significant computational power, which is possible with advanced chipsets. These technologies are used to create autonomous vehicles, personalized healthcare solutions, and advanced robotics, among others.</p> <p>Another area where next-gen chipsets are making a significant impact is the Internet of Things (IoT) space. The proliferation of connected devices requires powerful, energy-efficient, and cost-effective chipsets to enable communication and data processing across a wide range of devices. Next-gen chipsets are also driving advancements in 5G networks, which are expected to deliver high-speed, low-latency connectivity and unlock new possibilities in areas such as virtual reality, augmented reality, and remote surgery.</p> <p>The future of chip design is bright, and next-gen chipsets will enable more innovative solutions across many industries. As technology evolves, we can expect even more exciting developments in chip design and the solutions they enable.</p> <p>To conclude, the process of chip design is complex and comprises several steps and stages, which has a significant impact on the industry. Currently, there are various types of chips in use. As new technologies continue to emerge, there will always be opportunities for improvement in how we construct these chipsets.</p> 	<!--sphider_noindex--> 
+
+	<br/><br/>  		<style>
+		table#contactprov, table#contactprov td
+		{
+		padding:0px!important;
+		border-collapse:collapse!important; 
+		border:1px solid black;
+		}
+		table.hidden, table.hidden td
+		{
+		padding:0px!important;
+		border-collapse:collapse!important; 
+		border:0!important;
+		}
+	
+		</style>
+
+	
+<br/><br/>  
+
+
+	<div style="text-align: center;"  class="hide560">
+	<table id="contactprov" width="380" cellpadding="0" cellspacing="0" border="1" bordercolor="#666666">
+	<tr><td>
+    	<table class="hidden" cellpadding="0" cellspacing="0" border="0">
+	<!-- top image -->
+	<tr>
+    	<td colspan="3" style="text-align: left;">
+    	<img src="//www.design-reuse.com/NEWS/IMAGES/resource_centerHeader.gif" width="380" height="25" border="0" alt=""/>
+	</td>
+    	</tr>
+
+    	<!-- left side spacer -->
+    	<tr>
+    	<td >&nbsp;&nbsp;&nbsp;
+    	</td>
+    	<td style="text-align: left;">
+    	<h3>
+    	Contact Softnautics, Inc.    	</h3>
+
+	<form name="ipdb" method="post" action="https://www.design-reuse.com/articles/54033/an-outline-of-the-semiconductor-chip-design-flow.html" >
+	<input type="hidden" name="mode" value="send"/>
+	<input type="hidden" name="id" value="54033"/>
+	<input type="hidden" name="action" value="send"/>
+	<b>
+	Fill out this form for contacting a <i> Softnautics, Inc. </i> representative.<br/><br/>
+    	</b>
+    	<p style="text-align: center;">
+    	<table class="hidden" border="0" cellpadding="2" cellspacing="2">
+
+	<tr><td nowrap="nowrap">Your Name:</td>
+    	<td><input type="text" name="name" size="40" value=""/></td></tr>
+
+   	<tr><td nowrap="nowrap">Your E-mail
+    	address:</td>
+    	<td><input type="text" name="email" size="40" value=""/></td></tr>
+
+   	<tr><td nowrap="nowrap">Your Company
+    	address:</td>
+    	<td><input type="text" name="company" size="40" value=""/></td></tr>
+
+   	<tr><td nowrap="nowrap">Your Phone Number:</td>
+    	<td><input type="text" name="phone" size="40" value=""/></td></tr>
+
+
+    	<tr><td colspan="2">Write your message:</td></tr>
+
+    	<tr><td colspan="2" align="right"><textarea name="message" rows="10" cols="40" wrap="virtual"></textarea></td></tr>
+	
+    	<tr><td colspan="2" align="right"><input type="submit" value="send"/>
+    	</td></tr>
+    	</table>
+
+    	</p>
+    	</form>
+
+
+	</td>
+    	<td >&nbsp;&nbsp;&nbsp;
+    	</td>
+
+	</tr>
+
+    	</table>
+
+    	</td>
+    	</tr>
+    	</table>
+    	
+    	<br/>
+    	<br/>
+
+	</div>
+
+
+
+
+       
+<br/><br/>     
+
+
+<br/><br/>     
+<script type="text/javascript">      
+function page_info(text) 
+{
+	windows = window.open(text,"description", "scrollbars=yes,width=520,height=500");
+}
+</script>
+
+<br/><br/>
+
+	
+  
+
+
+<script type="text/javascript">      
+//<!--
+function sendbyemail() 
+   {
+
+    var id  = "54033";
+    var url  = "//www.design-reuse.com/articles/sendbyemail.php?id=";
+    windows = window.open(url  + id,"description", "scrollbars=yes,width=570,height=500");
+   }
+//-->
+</script>
+
+<script type="text/javascript">
+//<!--	
+	
+			
+	function GoOutside(url) {
+		newsid = 54033 ;
+		location.href = "//www.design-reuse.com/articles" + "/exit/?id=" + newsid  + "&url=" + url;
+		return false;
+	}
+	
+
+			
+//-->
+</script>
+
+<!--/sphider_noindex-->
+
+
+</div>
+
+</div>
+
+
+	<!--sphider_noindex--> 
+	<div id="middle300">
+	<div style="margin-top: 15px;"> 
+
+<ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html%3Futm_medium%3Dfa%26utm_source%3Dwebsite&t=An+Outline+of+the+Semiconductor+Chip+Design+Flow" title="Share on Facebook" target="_blank"><img src="//static.designandreuse.com/img16/facebook.png"></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html%3Futm_medium%3Dtw%26utm_source%3Dwebsite&text=An+Outline+of+the+Semiconductor+Chip+Design+Flow:%20https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html&via=designreuse" target="_blank" title="Tweet"><img src="//static.designandreuse.com/img16/x.jpg"></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html%3Futm_medium%3Dli%26utm_source%3Dwebsite&title=An+Outline+of+the+Semiconductor+Chip+Design+Flow&source=%2F%2Fwww.design-reuse.com%2F" target="_blank" title="Share on LinkedIn"><img src="//static.designandreuse.com/img16/linkedin.png"></a></li>
+</ul>
+ <br/></div>
+
+	 
+		<div class="gradient">
+		<h3 class="oswald" style="margin-bottom: 15px;"><a href="https://www.design-reuse.com/sip/"  style="color:#E41129;" >Search Silicon IP</a></h3>
+		<div class="type1 bluelink">
+		<div style="font-size: 12px; color:black;">16,000 IP Cores from 450 Vendors</div>
+		<form method="get" action="https://www.design-reuse.com/sip/" name="formsip"  style="padding:6px">
+		<input class="searchip-text" type="text" id="qsip" name="q"  onblur="if (this.value == '') {this.value = 'Enter Keywords....';}" onfocus="if(this.value == 'Enter Keywords....') {this.value = '';}" value="Enter Keywords...." style="float: left;"/>
+		<input type="submit" class="searchip" alt="Search Design-Reuse.com"/>
+		</form>
+				</div>
+		<div class="spaceboy" style="clear:both">&nbsp;</div>
+		</div>
+	
+	
+
+
+		
+		
+	<div class="bloc300 gradient">
+			  <h3 class="oswald"  style="margin-bottom: 15px;">Related Articles</h3>
+			 <div> 
+
+	<div class="type1">
+
+
+	<ul class="arrowList1" style="line-height: 13px; height: auto; border-bottom: 0px">
+	
+
+<li><a href="//www.design-reuse.com/articles/57334/how-to-save-time-and-improve-communication-between-semiconductor-design-and-verification-engineers.html">
+How to Save Time and Improve Communication Between Semiconductor Design and Verification Engineers</a></li>
+
+<li><a href="//www.design-reuse.com/articles/56618/transceiver-rich-fpga-vehicle-infotainment-system-designs.html">
+Why Transceiver-Rich FPGAs Are Suitable for Vehicle Infotainment System Designs</a></li>
+
+<li><a href="//www.design-reuse.com/articles/55406/quality-assurance-for-embedded-systems.html">
+Quality Assurance for Embedded Systems</a></li>
+
+<li><a href="//www.design-reuse.com/articles/55308/optimizing-embedded-software-for-real-time-multimedia-processing.html">
+Optimizing embedded software for real-time multimedia processing</a></li>
+
+<li><a href="//www.design-reuse.com/articles/55302/reliability-challenges-in-3d-ic-semiconductor-design.html">
+Reliability challenges in 3D IC semiconductor design</a></li>
+
+
+	</ul>
+	</div></div>
+	<div class="spaceboy" style="clear:both">&nbsp;</div>
+			<div  class="txtR" >
+		<a class="fcTheme ud"   style="color:#E41129;" href="//www.design-reuse.com/articles/provider1977.html">See Softnautics, Inc. Latest Articles &gt;&gt;</a>
+		</div>
+		</div>
+
+	
+			<div class="bloc300 gradient">
+		  <h3 class="oswald"  style="margin-bottom: 15px;">New Articles</h3>
+		 <div> 
+
+		<div class="type1">
+
+
+		<ul class="arrowList1" style="line-height: 13px; height: auto; border-bottom: 0px">
+		<li>
+				<a href="//www.design-reuse.com/articles/57584/discover-new-tessent-ultrasight-v-from-siemens-eda-and-accelerate-your-risc-v-development.html" target="_top">Discover new Tessent UltraSight-V from Siemens EDA, and accelerate your RISC-V development.</a>
+				</li>
+<li>
+				<a href="//www.design-reuse.com/articles/57555/the-critical-factors-of-a-high-performance-audio-codec.html" target="_top">The Critical Factors of a High-performance Audio Codec - What Chip Designers Need to Know</a>
+				</li>
+<li>
+				<a href="//www.design-reuse.com/articles/57527/density-management-in-analog-layout-design-addressing-issues-and-ensuring-consistency.html" target="_top">Density Management in Analog Layout Design: Addressing Issues and Ensuring Consistency</a>
+				</li>
+<li>
+				<a href="//www.design-reuse.com/articles/57487/nexus-a-lightweight-and-scalable-multi-agent-framework-for-complex-tasks-automation.html" target="_top">Nexus: A Lightweight and Scalable Multi-Agent Framework for Complex Tasks Automation</a>
+				</li>
+<li>
+				<a href="//www.design-reuse.com/articles/57477/how-the-ability-to-manage-register-specifications-helps-you-create-more-competitive-products.html" target="_top">How the Ability to Manage Register Specifications Helps You Create More Competitive Products</a>
+				</li>
+
+		</ul>
+		</div></div>
+		<div class="spaceboy" style="clear:both">&nbsp;</div>
+	<div  class="txtR" >
+		<a class="fcTheme ud"   style="color:#E41129;" href="//www.design-reuse.com/articles/" >See New Articles &gt;&gt;</a>
+		</div>
+		</div>
+	
+		<div class="bloc300 gradient">
+			  <h3 class="oswald"  style="margin-bottom: 15px;">Most Popular</h3>
+			 <div> 
+
+	<div class="type1">
+
+
+	<ol>
+
+					<li class=""><a href="//www.design-reuse.com/articles/44987/system-verilog-assertions-simplified.html" target="_top">
+				System Verilog Assertions Simplified				</a></li>
+
+							<li class=""><a href="//www.design-reuse.com/articles/52476/synthesis-methodology-netlist-qualification.html" target="_top">
+				Synthesis Methodology &amp; Netlist Qualification				</a></li>
+
+							<li class="up"><a href="//www.design-reuse.com/articles/54881/tackling-congestion-and-shorts-with-practical-approaches-and-pnr-tool-icc2.html" target="_top">
+				Enhancing VLSI Design Efficiency: Tackling Congestion and Shorts with Practical Approaches and PnR Tool (ICC2)				</a></li>
+
+							<li class="up"><a href="//www.design-reuse.com/articles/38374/pcie-error-logging-and-handling-on-a-typical-soc.html" target="_top">
+				PCIe error logging and handling on a typical SoC				</a></li>
+
+							<li class="up"><a href="//www.design-reuse.com/articles/48331/scan-chains-pnr-outlook.html" target="_top">
+				Scan Chains: PnR Outlook				</a></li>
+
+			
+	</ol>
+	</div></div>
+	<div class="spaceboy" style="clear:both">&nbsp;</div>
+	<div  class="txtR" >
+		<a class="fcTheme ud"   style="color:#E41129;" href="//www.design-reuse.com/articles/mostpopular">See the Top 20 &gt;&gt;</a></div>
+
+	</div>
+	
+	
+	<table style="text-align: center;" class="hidden" >
+<tr><td>
+<a href="javascript:sendbyemail()">
+<img src="//static.designandreuse.com/NEWS/IMAGES/icn_emailarticle.gif" width="24" height="24" alt="" border="0"/>
+</a></td>
+<td><a href="javascript:sendbyemail()"  style="font-size:9px">
+E-mail This Article
+</a></td>
+<td><img src="/IMG2002/spacer.gif" width="20" height="24" alt="" border="0"/>
+</td>
+<td><a href="//www.design-reuse.com/articles/?id=54033&amp;print=yes">
+<img src="//static.designandreuse.com/NEWS/IMAGES/icn_print.gif" width="24" height="24" alt="" border="0"/>
+</a>
+</td>
+<td><a href="//www.design-reuse.com/articles/?id=54033&amp;print=yes" style="font-size:9px">
+Printer-Friendly Page</a>
+</td>
+</tr>
+</table>
+	
+	</div>
+	</div>
+
+	<!--/sphider_noindex-->
+
+</div>
+
+
+	<div id="right135">
+	<!--sphider_noindex-->
+	<ins data-revive-zoneid="5" data-revive-id="ad0a248f25b445cf636ada378c22c876"></ins>
+	<br/><br/>
+	<ins data-revive-zoneid="6" data-revive-id="ad0a248f25b445cf636ada378c22c876"></ins>
+	<br/><br/>
+	
+<ins data-revive-zoneid="7" data-revive-id="ad0a248f25b445cf636ada378c22c876"></ins>
+	<br/><br/>
+		<!--/sphider_noindex-->
+	</div>
+
+<div class="clearBoth"></div>
+<div id="leaderboard2015">
+<ins data-revive-zoneid="3" data-revive-id="ad0a248f25b445cf636ada378c22c876"></ins>
+</div> 
+
+</div>
+
+
+ <div class="clearLeft"></div> 
+  </div>
+  
+  
+<div id="bandeauBasFooter"><div id="bandeauBasFooter2">
+    <div id="copyright">
+	<!--sphider_noindex-->
+	<p><strong>© 2024 Design And Reuse</strong></p> <p>All Rights Reserved.</p>
+	<p style="font-weight: normal;">No portion of this site may be copied, retransmitted, reposted, duplicated or otherwise used without the express written permission of Design And Reuse.</p> 
+	</div>
+<!--
+	<div class="colonne sansBordure">
+    <h4 style="font-size: 16px;">Give us your feedback</h4>
+	<p style="height:50px">Was this page helpful?<br/>Ask us a question or get help<br/><br/></p>
+		<div class="sitebutton">
+		<a href="/contact/" title="Talk to us" id="talktous"  rel="nofollow">Talk to us</a>					
+        </div>
+	</div>
+	-->
+                
+	<div class="colonne sansBordure">
+	<h4 style="font-size: 16px;">Partner with us</h4>
+	<p style="height:50px">
+	<br/>
+	<br/><br/></p>
+				<div class="sitebutton">
+				<a href="https://www.design-reuse-embedded.com/join-dr/" id="talktous"  rel="nofollow">Partner with us</a>
+				</div>
+	</div>             
+	
+	<div class="colonne hid980">
+	<h4 style="font-size: 16px;">List your Products</h4>
+	<p style="height:50px">Suppliers, list
+	your IPs for free.<br/><br/></p>
+				<div class="sitebutton">
+									<a href="/map/providers/" id="addproducts">List your Products</a>
+
+						</div>
+	</div>
+
+	<div class="colonne">
+	<h4 style="font-size: 16px;">Design-Reuse.com</h4>
+	<ul>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/contact/">Contact Us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/about/">About us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/partners/">D&amp;R Partner Program</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/ads/">Advertise with Us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/privacy/">Privacy Policy</a></li>
+	</ul>
+	
+
+	</div>
+
+
+</div></div>
+
+
+
+</section>
+
+
+	<script type="application/javascript" src="https://static.designandreuse.com/staticdefault-20210423a.js"></script>
+	
+
+
+
+
+					<div id="flosensing"></div>
+	<script type="text/javascript">
+	$( "#flosensing" ).append( "<img src=\"//www.design-reuse.com/flosensing/lg.php?url=%2Farticles%2F54033%2Fan-outline-of-the-semiconductor-chip-design-flow.html&c=articles&action=view&prod=54033&prov=1977&ref=https%3A%2F%2Fwww.google.com%2F\" width=\"1\" height=\"1\">");
+
+	</script>
+		
+			<script type="text/javascript">
+			$( "#flosensing" ).append( "<img src=\"//www.design-reuse.com/popularity/54033.gif\" width=\"1\" height=\"1\">");
+
+			</script>		
+			
+		
+	
+
+<script async src="//ad.design-reuse.com/adserver/www/delivery/asyncjs.php"></script>
+</body>
+</html>
